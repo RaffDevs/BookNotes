@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.booknotes'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.booknotes"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+ext {
+    room_version = "2.4.1"
+    retrofit_version = "2.9.0"
+    ml_text_recognition_version = "16.0.0"
+    image_cropper_version = "2.8.0"
+    lifecycle_version = "2.5.0-alpha02"
+    picasso_version = "2.5.2"
+    dotenv_version = "5.2.2"
+}
+
+dependencies {
+
+    //LIFECYCLE
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    //ROOM
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //RETROFIT
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //IMAGE_CROPPER
+    implementation "com.theartofdev.edmodo:android-image-cropper:$image_cropper_version"
+
+    //ML_TEXT_RECOGNIZER
+    implementation "com.google.mlkit:text-recognition:$ml_text_recognition_version"
+
+    //PICASSO
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+    //DOTENV
+    implementation "io.github.cdimascio:java-dotenv:$dotenv_version"
+
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
