@@ -26,14 +26,8 @@ class SearchBooksModule {
 
     @Singleton
     @Provides
-    fun provideSearchBooksDatasource(api: BooksAPI): SearchBooksDataSource {
-        return SearchBooksDataSourceImpl(api)
-    }
-
-    @Singleton
-    @Provides
-    fun provideSearchBooksRepository(dataSource: SearchBooksDataSource): SearchBooksRepository {
-        return SearchBooksRepositoryImpl(dataSource)
+    fun provideSearchBooksRepository(api: BooksAPI): SearchBooksRepository {
+        return SearchBooksRepositoryImpl(api)
     }
 
     @Singleton
